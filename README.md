@@ -1,33 +1,33 @@
 # DynamicBoneDynamicsCsv
-DynamicBoneの設定をCSVにして保存／読込するエディタ拡張  
+Editor extension to save/load Dynamic Bone settings to CSV
 
 ![sample1](Documents/sample1.png)  
 ![sample2](Documents/sample2.png)
 
-## 概要
-DynamicBoneは扱いやすい揺れ物スクリプトです。  
-ですが、UnitychanSpringBoneにあるような設定をCSVで保存しておく、読み込んで再度セットアップする、というような便利機能はありません。  
-そこでDynamicBoneの設定をCSVに保存する、読み込んで再セットアップする、エディタ拡張を作りました。  
+## Overview
+DynamicBone is an easy to use script for swaying bones.
+However, it doesn't have the convenient features that UnitychanSpringBone has, like saving or loading settings from a CSV file.
+So, CIFER created an extension to the editor that allows you to save your DynamicBone settings to a CSV file, or load a predefined setup.
 
-## 使い方
-1. [Booth](https://cifertech.booth.pm/items/1962923)からUnityPackageをダウンロードしてインポートする。
-2. プロジェクトのScripting Runtime Versionを __.NET4.x（もしくはそれ以上）__ にする。
-3. メニューバーより __CIFER.Tech -> DynamicBoneDynamicsCsv__ を選択する。
-4. 設定を保存／読込したいオブジェクトを登録する。
-5. 一番下に出現する『セーブ』ボタン／『ロード』ボタンを押下する。
+## Usage
+1. Download and import the UnityPackage from [Booth](https://cifertech.booth.pm/items/1962923).
+2. Change the project's Scripting Runtime Version to __.NET4.x (or higher)__.
+3. Select __Tools -> CIFER.Tech -> DynamicBoneDynamicsCsv__ from the menu bar. 
+4. Assign the object for which you want to rear or apply settings to.
+5. Click the "Save" or "Load" buttons at the bottom.
 
-## 動作環境
-- Unity2018.4.20f1
-  - Scripting Runtime Version Experimental(.NET 4.6 Equivaient)
-- [DynamicBone](https://assetstore.unity.com/packages/tools/animation/dynamic-bone-16743)
+## System Requirements
+- Unity 2018.4.20f1
+- Scripting Runtime Version Experimental(.NET 4.6 Equivaient)
+- [Dynamic Bone](https://assetstore.unity.com/packages/tools/animation/dynamic-bone-16743)
 
 ## FAQ
-### コライダーも保存／読込できますか？
-できます。ウィンドウ中の設定チェックボックスから、コライダーにチェックを入れてください。  
-そうすることでコライダーの設定を保存／読込するようになります。
+### Can I save/load colliders too?
+Yes. Check the Collider checkbox in the settings window.  
+Then the collider settings will be saved/loaded.
 
-### 設定を保存したときと読み込んだときでモデルの構造が変わっているのですが大丈夫ですか？
-大丈夫です。ただし、セーブ時と同じオブジェクト名が見つからない場合は、設定を復元せずにスキップします。
+### Will it still work if you load settings from a model with a different structure?
+Yes. However, if objects with the same name as saved objects are not found, their settings will be skipped without being restored.
 
-## ライセンス
-本リポジトリは[MITライセンス](LICENSE)の下で公開しています。
+## License
+This repository is published under the [MIT License](LICENSE).
