@@ -9,7 +9,7 @@ namespace CIFER.Tech.DynamicBoneDynamicsCsv
         private static Transform _targetRoot;
         private bool _isDynamicBoneSaveLoad = true, _isColliderSaveLoad = true;
 
-        [MenuItem("CIFER.Tech/DynamicBoneDynamicsCsv")]
+        [MenuItem("Tools/CIFER.Tech/DynamicBoneDynamicsCsv")]
         private static void Open()
         {
             var window = GetWindow<DynamicBoneDynamicsCsvWindow>("DB CSV");
@@ -21,39 +21,39 @@ namespace CIFER.Tech.DynamicBoneDynamicsCsv
         private void OnGUI()
         {
             _targetRoot =
-                EditorGUILayout.ObjectField("DynamicBoneのルート", _targetRoot, typeof(Transform), true) as Transform;
+                EditorGUILayout.ObjectField("Dynamic Bone Root", _targetRoot, typeof(Transform), true) as Transform;
 
-            if (GUILayout.Button("選択からルートを取得"))
+            if (GUILayout.Button("Set current selection as root"))
             {
                 _targetRoot = GetRootBone();
             }
 
             EditorGUILayout.Space();
 
-            EditorGUILayout.LabelField("設定", new GUIStyle
+            EditorGUILayout.LabelField("Configuration", new GUIStyle
             {
                 alignment = TextAnchor.MiddleCenter
             });
 
-            _isDynamicBoneSaveLoad = EditorGUILayout.ToggleLeft("DynamicBone", _isDynamicBoneSaveLoad);
-            _isColliderSaveLoad = EditorGUILayout.ToggleLeft("コライダー", _isColliderSaveLoad);
+            _isDynamicBoneSaveLoad = EditorGUILayout.ToggleLeft("Dynamic Bone", _isDynamicBoneSaveLoad);
+            _isColliderSaveLoad = EditorGUILayout.ToggleLeft("Dynamic Bone Collider", _isColliderSaveLoad);
 
             GUILayout.FlexibleSpace();
 
             //エラー、警告判定
             if (_targetRoot == null)
             {
-                EditorGUILayout.HelpBox("ルートオブジェクトを選択してください。", MessageType.Error);
+                EditorGUILayout.HelpBox("Please select the root object.", MessageType.Error);
                 return;
             }
 
             EditorGUILayout.BeginHorizontal();
             {
                 //セーブ
-                if (GUILayout.Button("セーブ"))
+                if (GUILayout.Button("Save as..."))
                 {
                     var filePath = EditorUtility.SaveFilePanel(
-                        "DynamicBoneセットアップを保存", "", $"{_targetRoot.name}_DynamicBone_Dynamics.csv", "csv");
+                        "Save Dynamic Bone setup to...", "", $"{_targetRoot.name}_DynamicBone_Dynamics.csv", "csv");
                     if (filePath.Length <= 0)
                         return;
 
@@ -68,10 +68,10 @@ namespace CIFER.Tech.DynamicBoneDynamicsCsv
                 }
 
                 //ロード
-                if (GUILayout.Button("ロード"))
+                if (GUILayout.Button("Load from..."))
                 {
                     var filePath = EditorUtility.OpenFilePanelWithFilters(
-                        "DynamicBoneセットアップを読み込む", "", new[] {"CSVファイル", "csv", "テキストファイル", "txt"});
+                        "Load Dynamic Bone setup from...", "", new[] {"CSV file", "csv", "Text file", "txt"});
                     if (filePath.Length <= 0)
                         return;
 
